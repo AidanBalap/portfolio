@@ -1,0 +1,26 @@
+---
+interface Props {
+    tech: string;
+}
+
+const { tech } = Astro.props;
+
+const COLOR_DEFAULT = 'bg-zinc-800/25';
+const COLOR_VALUES = {
+    'PHP': 'bg-[#777BB3]/50',
+    'MySQL': 'bg-[#f29111]/50',
+    'TailwindCSS': 'bg-[#06B6D4]/50',
+
+    'Java': 'bg-[#f89820]/50',
+    'JavaFX': 'bg-[#f89820]/50',
+
+    'MQTT': 'bg-[#6fc276]/50',
+    'Python': 'bg-[#4b8bbe]/50',
+};
+
+const color:string = COLOR_VALUES[tech as keyof typeof COLOR_VALUES] || COLOR_DEFAULT;
+---
+
+<p class=`${color} text-xs md:text-sm lg:text-base border border-white/10 rounded-full flex items-center px-2 mb-1 text-white/80`>
+    { tech }
+</p>

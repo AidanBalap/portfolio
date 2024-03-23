@@ -1,0 +1,36 @@
+---
+const CURRENT_YEAR = new Date().getFullYear();
+
+const LINKS = [
+    {
+        href: '#top',
+        text: 'Top'
+    },
+    {
+        href: 'https://github.com/aidanbalap/portfolio',
+        text: 'Source code'
+    },
+    {
+        href: 'https://github.com/aidanbalap',
+        text: 'Github'
+    },
+    {
+        href: 'https://linkedin.com/in/aidanbalap',
+        text: 'LinkedIn'
+    },
+];
+---
+
+<footer class="w-full mx-auto lg:max-w-5xl px-0 lg:px-6 text-sm md:text-base">
+    <div class="flex gap-y-2 flex-col-reverse items-center md:flex-row justify-between px-2 py-1 lg:px-4">
+        <p class="text-white">© Aidan Balasch Pérez, { CURRENT_YEAR } - Inspired by <a class="hover:underline" href="https://github.com/midudev/porfolio.dev" target="_blank">midudev</a></p>
+
+        <div class="border-b-2 border-white/80 pb-2 md:border-0 md:py-0">
+            {LINKS.map((link) => (
+                <a class="px-2 hover:bg-zinc-600 hover:underline" href={ link.href } target="_blank" rel="noopener noreferrer">
+                    { link.text }
+                </a>
+            ))}
+        </div>
+    </div>
+</footer>

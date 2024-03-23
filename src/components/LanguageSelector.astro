@@ -1,0 +1,33 @@
+---
+const LANGUAGES = [
+    {id: 'en', link: '/', text: '🇺🇸 EN', aria: 'English'},
+    {id: 'es', link: '/es/', text: '🇪🇸 ES', aria: 'Español'},
+    {id: 'fr', link: '/fr/', text: '🇫🇷 FR', aria: 'Français'}
+]
+---
+
+<select id="language-selector" class="bg-transparent" aria-label="Language selector">
+    {LANGUAGES.map(lang => (
+        <option class="bg-black/80 text-white/80 rounded-md" value={lang.id} data-redirect={lang.link} aria-label={lang.aria}>{lang.text}</option>
+    ))}
+</select>
+
+<script>
+    // Language change on redirect
+    const languageSelector = document.getElementById('language-selector') as HTMLSelectElement;
+    const currentUrlLanguage = window.location.pathname.split('/')[1];
+
+    if (currentUrlLanguage) {
+        languageSelector.value = currentUrlLanguage;
+    } else {
+        languageSelector.value = 'en';
+    }
+
+    languageSelector.addEventListener('change', (event: Event) => {
+        const redirectUrl = (event.target as HTMLSelectElement).selectedOptions[0].getAttribute('data-redirect') || '/';
+
+        if (event.target) {
+            window.location.href = redirectUrl;
+        }
+    });
+</script>

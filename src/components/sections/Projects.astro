@@ -1,0 +1,61 @@
+---
+import ProjectIcon from '@/icons/Project.astro'
+import GitHubIcon from '@/icons/GitHub.astro'
+
+import ProjectArticle from '@/components/ProjectArticle.astro'
+import InfoPill from '@/components/InfoPill.astro'
+
+import { getI18N, replaceStrong } from "@/i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+---
+
+<section id="projects">
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 my-10"><ProjectIcon class="size-12 mr-5"/> {i18n.HEADER.PROJECTS}</h2>
+
+    <div class="max-w-6xl mx-auto grid bento-grid gap-6">
+        {i18n.PROJECTS.map(project => (
+            <ProjectArticle title={project.TITLE} gridArea={project.GRID_AREA}>
+                <img slot="image" loading="lazy" class="w-full h-full object-fill rounded-sm" src={project.IMAGE} alt={project.TITLE}>
+                <p slot="description" class="text-sm md:text-base text-pretty text-white/80" set:html={replaceStrong(project.DESCRIPTION)}></p>
+                <div slot="pill-list" class="flex flex-wrap gap-x-2">
+                    {project.REPO && (
+                        <a href={project.REPO} class="flex justify-center items-center bg-zinc-800/25 size-6 md:size-8 rounded-full transition hover:scale-125" target="_blank" rel="noopener noreferrer" aria-label={`${project.TITLE} Github repository`}>
+                            <GitHubIcon class="h-full m-[5px]"/>
+                        </a>
+                    )}
+
+                    {project.SKILLS && project.SKILLS.map(pill => (
+                        <InfoPill tech={pill} />
+                    ))}
+                </div>
+            </ProjectArticle>
+        ))}
+    </div>
+</section>
+
+<style>
+    .bento-grid {
+        grid-template-columns: minmax(400px, auto);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 1rem;
+
+        grid-template:
+            "e-co e-co e-co"
+            "e-co e-co e-co"
+            "mqtt mqtt memo"
+            "mqtt mqtt memo";
+    }
+
+    @media screen and (max-width: 640px) {
+        .bento-grid {
+            grid-template:
+                "e-co e-co e-co"
+                "e-co e-co e-co"
+                "mqtt mqtt mqtt"
+                "mqtt mqtt mqtt"
+                "memo memo memo";
+        }
+    }
+</style>

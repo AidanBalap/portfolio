@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import { getI18N } from "@/i18n"
+
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+import Top from '@/components/sections/Top.astro';
+// import Experience from '@/components/sections/Experience.astro';
+import Projects from '@/components/sections/Projects.astro';
+import Education from '@/components/sections/Education.astro';
+import About from '@/components/sections/About.astro';
+import ContactCard from '@/components/sections/ContactCard.astro';
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+---
+
+<Layout title={i18n.SEO.SITE_NAME}>
+	<main class="flex flex-col gap-y-16 w-full mx-auto lg:max-w-5xl px-2 md:px-6">
+		<Top>
+			<Header />
+		</Top>
+
+		<!-- <Experience /> -->
+		
+		<Education />
+
+		<Projects />
+
+		<About />
+
+		<ContactCard />
+	</main>
+
+	<Footer />
+</Layout>

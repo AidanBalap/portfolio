@@ -1,0 +1,79 @@
+---
+import { getI18N } from "@/i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+---
+
+<div id="fix-content-jump"></div>
+
+<header id="header">
+    <nav>
+        <ul class="flex flex-wrap max-w-6xl gap-x-6 gap-y-4 p-2 justify-center border-2 border-zinc-400 backdrop-blur-xl rounded-2xl">
+            <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#top">{i18n.HEADER.HOME}</a></li>
+            <!-- <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#experience">{i18n.HEADER.EXPERIENCE}</a></li> -->
+            <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#education">{i18n.HEADER.EDUCATION}</a></li>
+            <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#projects">{i18n.HEADER.PROJECTS}</a></li>
+            <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#about">{i18n.HEADER.ABOUT}</a></li>
+            <li class="hover:bg-zinc-800 rounded-sm hover:scale-105 transition-all"><a href="#contact-card">{i18n.HEADER.CONTACT}</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    .sticky {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+
+    .ctn-jump {
+        height: 44px;
+    }
+</style>
+
+<script>
+    // Stick header to top when scrolling down past it
+    var ctnJumper = document.getElementById("fix-content-jump");
+    var header = document.getElementById("header");
+
+    var currentState = false;
+    var currentThreshold = header?.offsetTop;
+    var isMobile = window.innerWidth < 640;
+
+    window.onload = checkForAlter;
+    window.onscroll = checkForAlter;
+    window.onresize = function() {
+        currentThreshold = header?.offsetTop;
+        isMobile = window.innerWidth < 640;
+        checkForAlter();
+    };
+
+    function checkForAlter() {
+        if (isMobile) return;
+
+        if (window.scrollY > (currentThreshold ?? 0)) {
+            alterHeader(true);
+        } else {
+            alterHeader(false);
+        }
+    }
+
+    function alterHeader(setState: boolean) {
+        if (currentState === setState) return;
+        currentState = setState;
+
+        if (setState) {
+            header?.classList.add("sticky");
+            ctnJumper?.classList.add("ctn-jump");
+        } else {
+            header?.classList.remove("sticky");
+            ctnJumper?.classList.remove("ctn-jump");
+        }
+    }
+</script>

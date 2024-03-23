@@ -1,0 +1,42 @@
+---
+import ExperienceIcon from '@/icons/Experience.astro'
+
+import { getI18N, replaceStrong } from "@/i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+---
+
+<section id="experience">
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-10"><ExperienceIcon class="size-12 mr-5"/>{i18n.HEADER.EXPERIENCE}</h2>
+    
+    <ol class="relative border-s border-gray-700">
+        {i18n.EXPERIENCE.map(exp => (
+            <li class="mb-10 ms-4">
+                <div class="flex justify-between">
+                    <span>
+                        <div class="absolute w-3 h-3 bg-gray-700 rounded-full mt-1.5 -start-1.5 border border-gray-900"></div>
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400/80">{exp.DURATION}</time>
+                        <span class="flex flex-col md:flex-row place-items-baseline">
+                            <h3 class="text-lg font-semibold text-balance text-white">{exp.COMPANY_NAME}</h3>
+                            <span class="ml-2 text-white/80">- {exp.LOCATION}</span>
+                        </span>
+                        
+                        <p class="text-base font-normal text-gray-400">{exp.ROLE}</p>
+                    </span>
+                    
+                    <picture>
+                        <img loading="lazy" class="max-h-16" src={exp.LOGO} alt={`${exp.COMPANY_NAME} logo`} />
+                    </picture>
+                </div>
+
+                
+                <ul class="flex flex-col gap-y-1 mt-1 ml-4">
+                    {exp.ROLE_TASKS.map((task) => (
+                        <li class="text-base font-normal text-gray-400 text-pretty max-w-[75ch]" set:html={`- ${replaceStrong(task)}`}></li>
+                    ))}
+                </ul>
+            </li>
+        ))}
+    </ol> 
+</section>

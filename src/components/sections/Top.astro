@@ -1,0 +1,48 @@
+---
+import Pill from "@/components/Pill.astro";
+import LanguageSelector from "@/components/LanguageSelector.astro";
+
+import GithubIcon from '@/icons/GitHub.astro';
+import LinkedinIcon from '@/icons/LinkedIn.astro';
+import MailIcon from '@/icons/Email.astro';
+// import CVIcon from '@/icons/CV.astro';
+
+import { getI18N, replaceStrong } from "@/i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+---
+
+<section class="pt-20 lg:pt-60 pb-8 sm:pb-44" id="top">
+    <article class="flex mb-8 flex-col-reverse justify-center lg:flex-row lg:justify-between">
+        <div class="flex flex-wrap flex-col">
+            <div class="flex py-4 gap-x-2 justify-center items-center flex-col lg:justify-start lg:flex-row">
+                <span class="text-lg my-auto">{i18n.TOP.BEFORE_NAME}</span>
+                <h1 class="text-5xl text-semibold md:text-6xl md:text-bold text-center pt-4 drop-shadow-lg">{i18n.TOP.NAME}</h1>
+            </div>
+
+            <p class="text-lg text-pretty py-2 justify-center min-h-[100px] max-w-full lg:max-w-[52ch] lg:justify-start" set:html={replaceStrong(i18n.TOP.DESCRIPTION)}></p>
+        
+            <div class="flex flex-wrap pt-6 gap-x-2 sm:gap-x-4 gap-y-2 justify-center lg:justify-start">
+                <Pill href="https://github.com/aidanbalap"><GithubIcon class="size-5" />Github</Pill>
+                <Pill href="https://linkedin.com/in/aidanbalap"><LinkedinIcon class="size-5" />LinkedIn</Pill>
+                <Pill href="mailto:abalaschp@gmail.com"><MailIcon class="size-5" />abalaschp@gmail.com</Pill>
+                <!-- <Pill href="/assets/en.pdf"><CVIcon class="size-5" />CV</Pill> -->
+                <Pill><LanguageSelector /></Pill>
+            </div>
+        </div>
+
+        <img class="size-[300px] rounded-full mx-auto lg:-mx-[50px]" src="/assets/me.webp" alt="Aidan Balasch Pérez"/>
+    </article>
+
+    <slot />
+</section>
+
+<style is:global>
+    .and-deg {
+        font-weight: 900;
+        background: -webkit-linear-gradient(0deg, rgba(16,6,159,0.9) 25%, rgb(254, 220, 0) 50%, rgba(213,0,50,0.8) 85%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>
