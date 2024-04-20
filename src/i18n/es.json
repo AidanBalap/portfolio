@@ -30,11 +30,11 @@
             "LOGO": "/assets/experience/ari.webp",
             "LOCATION": "Andorra",
             "ROLE": "Desarollador en prácticas",
-            "DURATION": "05/2024- 02/2024",
+            "DURATION": "05/2024 - 02/2024",
             "ROLE_TASKS": [
-                "Lorem ipsum, dolor sit amet consectetur **adipisicing** elit. Vero dicta quam blanditiis ratione tenetur. Lorem ipsum, dolor sit amet consectetur **adipisicing** elit. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, dolor sit amet consectetur adipisicing **elit**. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, **dolor** sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur."
+                "Implementación de múltiples procesos **ETL** en Python utilizando **Cloud Functions** y **BigQuery** de **Google Cloud** para el tratamiento de datos relacionados con el estado de los recursos hídricos del país.",
+                "Creación de flujos de **automatización** con Microsoft **Power Automate** para la organización de archivos adjuntos de correo.",
+                "Desarrollo de una interfaz web con autentificación para el filtrado y descarga de ficheros hospedados en **Google Cloud Storage**."
             ]
         }
     ],

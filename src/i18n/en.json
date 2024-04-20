@@ -26,15 +26,15 @@
 
     "EXPERIENCE": [
         {
-            "COMPANY_NAME": "Andorra Recerca + Innovació",
+            "COMPANY_NAME": "Andorra Research and Innovation",
             "LOGO": "/assets/experience/ari.webp",
             "LOCATION": "Andorra",
             "ROLE": "Intern developer",
-            "DURATION": "05/2024- 02/2024",
+            "DURATION": "05/2024 - 02/2024",
             "ROLE_TASKS": [
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur."
+                "Implementation of multiple **ETL** processes in Python using **Cloud Functions** and **BigQuery** from **Google Cloud** for processing data related to the state of the country's water resources",
+                "Creation of **automation** flows using Microsoft **Power Automate** for the organisation of email attachments.",
+                "Development of a web interface with authentication for filtering and downloading files hosted in **Google Cloud Storage**."
             ]
         }
     ],

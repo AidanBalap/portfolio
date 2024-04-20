@@ -17,7 +17,7 @@
 
     "HEADER": {
         "HOME": "Accueil",
-        "EXPERIENCE": "Expérience",
+        "EXPERIENCE": "Expérience professionnelle",
         "EDUCATION": "Formation",
         "PROJECTS": "Projets",
         "ABOUT": "À propos de moi",
@@ -26,15 +26,15 @@
 
     "EXPERIENCE": [
         {
-            "COMPANY_NAME": "Andorra Recerca + Innovació",
+            "COMPANY_NAME": "Andorra Research and Innovation",
             "LOGO": "/assets/experience/ari.webp",
             "LOCATION": "Andorre",
             "ROLE": "Développeur stagiaire",
-            "DURATION": "05/2024- 02/2024",
+            "DURATION": "05/2024 - 02/2024",
             "ROLE_TASKS": [
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur.",
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dicta quam blanditiis ratione tenetur."
+                "Mise en place de multiples processus **ETL** en Python en utilisant **Cloud Functions** et **BigQuery** de **Google Cloud** pour le traitement des données liées à l'état des ressources en eau du pays",
+                "Création de flux **d'automatisation** à l'aide de Microsoft **Power Automate** pour l'organisation des pièces jointes aux courriels",
+                "Développement d'une interface web avec authentification pour le filtrage et le téléchargement de fichiers hébergés sur **Google Cloud Storage**."
             ]
         }
     ],
