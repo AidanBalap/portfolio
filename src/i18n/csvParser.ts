@@ -25,47 +25,52 @@ const fileContent = await fetch(`https://docs.google.com/spreadsheets/d/${spreed
     return response;
   })
   .then((response) => response.text());
-  
 
+  
 export const getParsedTranslations = async (): Promise<FinalTranslationsFormat> => {
   const translations: FinalTranslationsFormat = {};
 
-  parse(fileContent, { columns: true, delimiter: ",", skip_empty_lines: true }, (err, records: CSVTranslations[]) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    
-    records.forEach((record) => {
-      const { key, ...translationsByLang } = record;
-    
-      Object.entries(translationsByLang).forEach(([lang, translation]) => {
-        if (key === '') return;
-        if (!translations[lang]) translations[lang] = {};
-
-        if (key.endsWith('[]') || key.endsWith('{}')) {
-          const newKey = key.slice(0, -2);
-
-          if (translation === '') {
-            translation = translations["en"][newKey];
-          }
-
-          if (key.endsWith('[]')) {
-            if (!translations[lang][newKey]) translations[lang][newKey] = [];
-            translations[lang][newKey].push(translation);
-          } else {
-            try {
-              translations[lang][newKey] = JSON.parse(translation);
-            } catch (e) {
-              translations[lang][newKey] = translation;
+  await new Promise<void>((resolve, reject) => {
+    parse(fileContent, { columns: true, delimiter: ",", skip_empty_lines: true }, (err, records: CSVTranslations[]) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+        return;
+      }
+      
+      records.forEach((record) => {
+        const { key, ...translationsByLang } = record;
+      
+        Object.entries(translationsByLang).forEach(([lang, translation]) => {
+          if (key === '') return;
+          if (!translations[lang]) translations[lang] = {};
+  
+          if (key.endsWith('[]') || key.endsWith('{}')) {
+            const newKey = key.slice(0, -2);
+  
+            if (translation === '') {
+              translation = translations["en"][newKey];
             }
-
-            delete translations[lang][key];
+  
+            if (key.endsWith('[]')) {
+              if (!translations[lang][newKey]) translations[lang][newKey] = [];
+              translations[lang][newKey].push(translation);
+            } else {
+              try {
+                translations[lang][newKey] = JSON.parse(translation);
+              } catch (e) {
+                translations[lang][newKey] = translation;
+              }
+  
+              delete translations[lang][key];
+            }
+          } else {
+            translations[lang][key] = translation || translations["en"][key];
           }
-        } else {
-          translations[lang][key] = translation || translations["en"][key];
-        }
+        });
       });
+
+      resolve();
     });
   });
 
