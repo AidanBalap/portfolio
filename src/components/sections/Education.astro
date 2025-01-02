@@ -5,24 +5,28 @@ import { getI18N } from "@/i18n"
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
+
+const educationIndex = ["IUT", "LCF"]
 ---
 
 <section id="education">
-    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-10"><StudyIcon class="size-12 mr-5"/>{i18n.HEADER.EDUCATION}</h2>
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-10"><StudyIcon class="size-12 mr-5"/>{i18n.HEADER_EDUCATION}</h2>
     
     <ol class="flex flex-col gap-y-12">
-        {i18n.EDUCATION.map(ed => (
+        {educationIndex.map(edIndex => {
+            const ed = `EDUCATION_${edIndex}`
+            return (
             <li class="flex gap-x-4 ms-1">
                 <picture class="my-auto w-28">
-                    <img loading="lazy" class="mx-auto max-w-28 max-h-16" src={ed.LOGO} alt={`${ed.TITLE} logo`}/>
+                    <img loading="lazy" class="mx-auto max-w-28 max-h-16" src={i18n[`${ed}_LOGO`]} alt={`${i18n[`${ed}_TITLE`]} logo`}/>
                 </picture>
 
                 <div class="border-l-2 pl-2 border-zinc-400/40">
-                    <h3 class="text-lg font-semibold text-balance text-white">{ed.TITLE}</h3>
-                    <p class="text-base font-normal text-pretty text-gray-400">{ed.LOCATION}</p>
-                    <time class="text-gray-400/80">{ed.TIME}</time>
+                    <h3 class="text-lg font-semibold text-balance text-white">{i18n[`${ed}_TITLE`]}</h3>
+                    <p class="text-base font-normal text-pretty text-gray-400">{i18n[`${ed}_LOCATION`]}</p>
+                    <time class="text-gray-400/80">{i18n[`${ed}_TIME`]}</time>
                 </div>
             </li>
-        ))}
+        )})}
     </ol> 
 </section>

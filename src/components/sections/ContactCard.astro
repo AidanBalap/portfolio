@@ -11,12 +11,12 @@ const i18n = getI18N({ currentLocale })
 ---
 
 <section id="contact-card">
-    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-6"><ContactIcon class="size-12 mr-5"/>{i18n.HEADER.CONTACT}</h2>
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-6"><ContactIcon class="size-12 mr-5"/>{i18n.HEADER_CONTACT}</h2>
 
     <article class="max-w-3xl h-80 mx-auto card-polygon grid grid-cols-3 place-items-center bg-[#435966]/80 my-20">
         <div class="flex flex-col col-span-2">
-            <h3 class="mx-auto font-bold text-4xl underline pb-2">{i18n.CONTACT.TOP}</h3>
-            <p class="text-white/70 text-pretty max-w-[35ch] px-2 py-6 text-center text-sm md:text-start md:text-base">{i18n.CONTACT.DESCRIPTION}</p>
+            <h3 class="mx-auto font-bold text-4xl underline pb-2">{i18n.CONTACT_TOP}</h3>
+            <p class="text-white/70 text-pretty max-w-[35ch] px-2 py-6 text-center text-sm md:text-start md:text-base">{i18n.CONTACT_DESCRIPTION}</p>
             <ul class="flex flex-col mx-auto md:flex-row md:justify-around md:mx-0 gap-y-2">
                 <li><a class="flex gap-x-2 hover:underline" href="https://linkedin.com/in/aidanbalap" target="_blank" rel="noopener noreferrer"><LinkedinIcon class="size-6" />/in/aidanbalap</li></a>
                 <li><a class="flex gap-x-2 hover:underline" href="https://github.com/aidanbalap" target="_blank" rel="noopener noreferrer"><GithubIcon class="size-6" />/aidanbalap</li></a>
@@ -24,9 +24,9 @@ const i18n = getI18N({ currentLocale })
         </div>
 
         <div class="flex flex-col w-full h-full justify-center items-center border-l-2 border-zinc-800">
-            <img class="size-32 rounded-full" src="/assets/me.webp" alt={i18n.TOP.NAME}/>
-            <h3 class="text-base md:text-xl text-center font-semibold pt-3">{i18n.TOP.NAME}</h3>
-            <h4 class="text-sm md:text-base text-center text-white/80">{i18n.CONTACT.ROLE}</h4>
+            <img class="size-32 rounded-full" src="/assets/me.webp" alt={i18n.TOP_NAME}/>
+            <h3 class="text-base md:text-xl text-center font-semibold pt-3">{i18n.TOP_NAME}</h3>
+            <h4 class="text-sm md:text-base text-center text-white/80">{i18n.CONTACT_ROLE}</h4>
             <p class="text-xs md:text-sm text-white/70">abalaschp@gmail.com</p>
             <!-- <a class="flex gap-x-2 mt-2 hover:underline" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener noreferrer"><CVIcon class="size-6" /> CV</a> -->
         </div>

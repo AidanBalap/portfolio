@@ -8,15 +8,15 @@ const i18n = getI18N({ currentLocale })
 ---
 
 <section id="about">
-    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-10"><PersonIcon class="size-12 mr-5"/>{i18n.HEADER.ABOUT}</h2>
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 mb-10"><PersonIcon class="size-12 mr-5"/>{i18n.HEADER_ABOUT}</h2>
     
     <article class="flex flex-col gap-y-4 md:gap-x-6 md:gap-y-0 md:flex-row"> 
-        <img class="size-80 rounded-xl mx-auto md:mx-0" src="/assets/me.webp" alt={i18n.TOP.NAME} />
+        <img class="size-80 rounded-xl mx-auto md:mx-0" src="/assets/me.webp" alt={i18n.TOP_NAME} />
 
         <div class="flex flex-col gap-y-4 px-2 md:px-0">
-            <h3 class="text-4xl font-semibold mx-auto md:mx-0">{i18n.TOP.NAME}</h3>
+            <h3 class="text-4xl font-semibold mx-auto md:mx-0">{i18n.TOP_NAME}</h3>
 
-            {i18n.ABOUT.map(paragraph => (
+            {i18n.ABOUT.map((paragraph: string) => (
                 <p class="text-white/75 text-pretty" set:html={replaceStrong(paragraph)}></p>
             ))}
         </div>

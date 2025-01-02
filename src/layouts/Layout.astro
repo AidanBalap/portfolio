@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-
 import { getI18N } from "@/i18n"
 
 const { currentLocale } = Astro
@@ -16,22 +14,21 @@ const i18n = getI18N({ currentLocale })
 
 		<meta name="robots" content="index, follow">
 
-		<meta name="author" content={i18n.SEO.AUTHOR} />
-		<meta name="keywords" content={i18n.SEO.KEYWORDS} />
-		<meta name="description" content={i18n.SEO.DESCRIPTION} />
+		<meta name="author" content={i18n.SEO_AUTHOR} />
+		<meta name="keywords" content={i18n.SEO_KEYWORDS} />
+		<meta name="description" content={i18n.SEO_DESCRIPTION} />
 
-		<meta property="og:title" content={i18n.SEO.TITLE} />
-		<meta property="og:description" content={i18n.SEO.DESCRIPTION} />
-		<meta property="og:image" content={i18n.SEO.IMAGE} />
-		<meta property="og:url" content={i18n.SEO.URL} />
-		<meta property="og:site_name" content={i18n.SEO.SITE_NAME} />
+		<meta property="og:title" content={i18n.SEO_TITLE} />
+		<meta property="og:description" content={i18n.SEO_DESCRIPTION} />
+		<meta property="og:image" content={i18n.SEO_IMAGE} />
+		<meta property="og:url" content={i18n.SEO_URL} />
+		<meta property="og:site_name" content={i18n.SEO_SITE_NAME} />
 		<meta property="og:locale" content={currentLocale} />
 		<meta property="og:type" content="website" />
 
 		<link rel="preload" href="/assets/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href="/assets/me.webp" as="image" type="image/webp" />
 
-		<ViewTransitions />
 		<meta name="generator" content={Astro.generator} />
 
 		<title>{Astro.props.title}</title>

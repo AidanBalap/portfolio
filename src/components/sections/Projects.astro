@@ -9,29 +9,33 @@ import { getI18N, replaceStrong } from "@/i18n"
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
+
+const projectsIndex = ["ECO", "MQTT", "MEMO"]
 ---
 
 <section id="projects">
-    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 my-10"><ProjectIcon class="size-12 mr-5"/> {i18n.HEADER.PROJECTS}</h2>
+    <h2 class="flex text-5xl font-semibold py-2 border-b-2 border-zinc-400/40 my-10"><ProjectIcon class="size-12 mr-5"/> {i18n.HEADER_PROJECTS}</h2>
 
     <div class="max-w-6xl mx-auto grid bento-grid gap-6">
-        {i18n.PROJECTS.map(project => (
-            <ProjectArticle title={project.TITLE} gridArea={project.GRID_AREA}>
-                <img slot="image" loading="lazy" class="w-full h-full object-fill rounded-sm" src={project.IMAGE} alt={project.TITLE}>
-                <p slot="description" class="text-sm md:text-base text-pretty text-white/80" set:html={replaceStrong(project.DESCRIPTION)}></p>
+        {projectsIndex.map(projectIndex => {
+            const prj = `PROJECTS_${projectIndex}`
+            return (
+            <ProjectArticle title={i18n[`${prj}_TITLE`]} gridArea={i18n[`${prj}_GRID_AREA`]}>
+                <img slot="image" loading="lazy" class="w-full h-full object-fill rounded-sm" src={i18n[`${prj}_IMAGE`]} alt={i18n[`${prj}_TITLE`]}>
+                <p slot="description" class="text-sm md:text-base text-pretty text-white/80" set:html={replaceStrong(i18n[`${prj}_DESCRIPTION`])}></p>
                 <div slot="pill-list" class="flex flex-wrap gap-x-2">
-                    {project.REPO && (
-                        <a href={project.REPO} class="flex justify-center items-center bg-zinc-800/25 size-6 md:size-8 rounded-full transition hover:scale-125" target="_blank" rel="noopener noreferrer" aria-label={`${project.TITLE} Github repository`}>
+                    {i18n[`${prj}_REPO`] && (
+                        <a href={i18n[`${prj}_REPO`]} class="flex justify-center items-center bg-zinc-800/25 size-6 md:size-8 rounded-full transition hover:scale-125" target="_blank" rel="noopener noreferrer" aria-label={`${i18n[`${prj}_TITLE`]} Github repository`}>
                             <GitHubIcon class="h-full m-[5px]"/>
                         </a>
                     )}
 
-                    {project.SKILLS && project.SKILLS.map(pill => (
+                    {i18n[`${prj}_SKILLS`] && i18n[`${prj}_SKILLS`].map((pill: string) => (
                         <InfoPill tech={pill} />
                     ))}
                 </div>
             </ProjectArticle>
-        ))}
+        )})}
     </div>
 </section>
 
