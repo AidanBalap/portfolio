@@ -6,7 +6,7 @@ import { getI18N, replaceStrong } from "@/i18n"
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
-const experiencesIndex = ["ARI"]
+const experiencesIndex = i18n.EXPERIENCE_TO_SHOW as string[]
 ---
 
 <section id="experience">
