@@ -10,7 +10,9 @@ import { getI18N, replaceStrong } from "@/i18n"
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
-const projectsIndex = ["ECO", "MQTT", "MEMO"]
+const projectsIndex = i18n.PROJECTS_TO_SHOW as string[]
+const bentoGridMain = i18n.PROJECTS_BENTO_GRID_MAIN
+const bentoGridResponsive = i18n.PROJECTS_BENTO_GRID_RESPONSIVE
 ---
 
 <section id="projects">
@@ -39,27 +41,15 @@ const projectsIndex = ["ECO", "MQTT", "MEMO"]
     </div>
 </section>
 
-<style>
+<style define:vars={{ bentoGridMain, bentoGridResponsive }}>
     .bento-grid {
-        grid-template-columns: minmax(400px, auto);
-        grid-template-rows: repeat(4, 1fr);
         grid-gap: 1rem;
-
-        grid-template:
-            "e-co e-co e-co"
-            "e-co e-co e-co"
-            "mqtt mqtt memo"
-            "mqtt mqtt memo";
+        grid-template: var(--bentoGridMain);
     }
 
     @media screen and (max-width: 640px) {
         .bento-grid {
-            grid-template:
-                "e-co e-co e-co"
-                "e-co e-co e-co"
-                "mqtt mqtt mqtt"
-                "mqtt mqtt mqtt"
-                "memo memo memo";
+            grid-template: var(--bentoGridResponsive);
         }
     }
 </style>
