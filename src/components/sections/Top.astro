@@ -41,8 +41,10 @@ const i18n = getI18N({ currentLocale })
 <style is:global>
     .and-deg {
         font-weight: 900;
-        background: -webkit-linear-gradient(0deg, rgba(16,6,159,0.9) 25%, rgb(254, 220, 0) 50%, rgba(213,0,50,0.8) 85%);
+        background-image: linear-gradient(90deg, rgba(16,6,159,0.9) 0%, rgb(254, 220, 0) 50%, rgba(213,0,50,0.8) 100%);
+        background-clip: text;
         -webkit-background-clip: text;
+        color: transparent;
         -webkit-text-fill-color: transparent;
     }
 </style>
